@@ -20,10 +20,10 @@
     "state": {
         "icon": {
             "open": "https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-open.png",
-            "closed": "https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-logo.gif"
+            "closed": "https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-closed.png"
         },
         "open": true,
-        "lastchange": 1480434619,
+        "lastchange": 1480438529,
         "message": "",
         "trigger_person": "infobot"
     },
