@@ -55,14 +55,15 @@ if(isset($_POST['status'])) {
 		// altedaten weg
 		//$last = explode('-',date("Y-m-d-w-H",time()-(367*24*60*60)));
 		$last = array(2016,11,13,0,20);
-		/*$statement = $db->prepare("DELETE FROM log WHERE year < :y OR
+		//hier ist noch ein problem
+		$statement = $db->prepare("DELETE FROM log WHERE year < :y OR
 		  (year = :y AND (month > :m OR day > :d));");
                 $statement->bindValue(':y', $last[0]);
                 $statement->bindValue(':m', $last[1]);
                 $statement->bindValue(':d', $last[2]);
 
 
-                $statement->execute();*/
+                //$statement->execute();
 
 		// daten aufbereiten
 		$statement = $db->prepare("SELECT * FROM log ORDER BY year,month,day,hour");
