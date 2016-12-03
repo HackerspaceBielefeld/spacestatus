@@ -16,8 +16,18 @@ if(!file_exists($DBFILE)) {
 }
 
 if(isset($_POST['status'])) {
+
+        $time = explode('-',date("Y-m-d-w-H"));
+
+        $statem = $db->prepare("DELETE FROM log WHERE
+          year = :y AND month = :m AND day = :d AND hour = :h;");
+        $statem->bindValue(':y',$time[0]);
+        $statem->bindValue(':m',$time[1]);
+        $statem->bindValue(':d',$time[2]);
+        $statem->bindValue(':h',$time[4]);
+        $statem->execute();
+
 	if($_POST['status'] == 'open') {
-		$time = explode('-',date("Y-m-d-w-H"));
 		$statement = $db->prepare("INSERT INTO log (
 		  year,month,day,wday,hour, status) VALUES (
 		  :y,:m,:d,:w,:h,'open');");
@@ -30,7 +40,6 @@ if(isset($_POST['status'])) {
 		$result = $statement->execute(); 
 		//echo 'opened';
 	}else{
-                $time = explode('-',date("Y-m-d-w-H"));
                 $statement = $db->prepare("INSERT INTO log (
                   year,month,day,wday,hour, status) VALUES (
                   :y,:m,:d,:w,:h,'closed');");
@@ -46,14 +55,14 @@ if(isset($_POST['status'])) {
 		// altedaten weg
 		//$last = explode('-',date("Y-m-d-w-H",time()-(367*24*60*60)));
 		$last = array(2016,11,13,0,20);
-		$statement = $db->prepare("DELETE FROM log WHERE year < :y OR
-		  (year = :y AND (month < :m OR day < :d));");
+		/*$statement = $db->prepare("DELETE FROM log WHERE year < :y OR
+		  (year = :y AND (month > :m OR day > :d));");
                 $statement->bindValue(':y', $last[0]);
                 $statement->bindValue(':m', $last[1]);
                 $statement->bindValue(':d', $last[2]);
 
 
-                $statement->execute();
+                $statement->execute();*/
 
 		// daten aufbereiten
 		$statement = $db->prepare("SELECT * FROM log ORDER BY year,month,day,hour");
