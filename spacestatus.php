@@ -40,7 +40,7 @@ $string = [
                 'closed' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-closed.png'],
         'open' => $isOpen,
         'lastchange' => time(),
-        'message' => "",
+        'message' => "https://hackerspace-bielefeld.de/spacestatus/display.php",
         'trigger_person' => "infobot"
     ],
     'icon' => [
