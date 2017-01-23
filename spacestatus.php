@@ -12,8 +12,26 @@ $projects = [
     'https://github.com/HackerspaceBielefeld',
     'https://wiki.hackerspace-bielefeld.de/Kategorie:Projekt',
 ];  
+// "sensors" : {
+$sensors = [
+	'temperature' => [
+		[
+			'value' => -99,
+			'unit' => '°C',
+			'location' => 'Outside',
+			'name' => "Street"
+		]
+	],
+	'humidity' => [
+		'value' => -99,
+		'unit' => '%',
+		'location' => 'Outside',
+		'name' => "Street"
+    ],
+	''
+];
 
-
+// TODO 'sensors' => $sensors,
 $string = [
     'api' => '0.13',
     'space' => 'Hackerspace Bielefeld e.V.',
