@@ -31,6 +31,17 @@ $sensors = [
 	''
 ];
 
+$feeds = [
+	'wiki' => [
+		'type' => 'atom',
+		'url' => 'https://wiki.hackerspace-bielefeld.de/api.php?hidebots=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom'
+	],
+	'calendar' => [
+		'type' => 'ical',
+		'url' => 'http://hackerspace-bielefeld.de/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events&no_html=true'
+	]
+];
+
 // TODO 'sensors' => $sensors,
 $string = [
     'api' => '0.13',
