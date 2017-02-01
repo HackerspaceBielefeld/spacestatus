@@ -3,9 +3,18 @@ header('Cache-Control: no-cache');
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-$isOpen = true;
-if (isset($_POST['status'])) {
-  $isOpen = (strcmp($_POST['status'], 'open') == 0);
+$data = (array)json_decode(file_get_contents('sensors.json'));
+
+if(isset($_GET) || isset($_POST)) {
+	if (isset($_POST['status'])) {
+		$data['status'] = (strcmp($_POST['status'], 'open') == 0);
+	}
+
+	foreach($_GET as $k=>$v) {
+		$data[$k] = $v;
+	}
+	//datei abspeichern
+	file_put_contents('sensors.json',json_encode($data));
 }
 
 $projects = [
@@ -16,14 +25,14 @@ $projects = [
 $sensors = [
 	'temperature' => [
 		[
-			'value' => -99,
+			'value' => $data['temp_out'],
 			'unit' => '°C',
 			'location' => 'Outside',
 			'name' => "Street"
 		]
 	],
 	'humidity' => [
-		'value' => -99,
+		'value' => $data['humidity'],
 		'unit' => '%',
 		'location' => 'Outside',
 		'name' => "Street"
@@ -67,7 +76,7 @@ $string = [
             [
                 'open' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-open.png',
                 'closed' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-closed.png'],
-        'open' => $isOpen,
+        'open' => $data['status'],
         'lastchange' => time(),
         'message' => "https://hackerspace-bielefeld.de/spacestatus/display.php",
         'trigger_person' => "infobot"
@@ -75,7 +84,7 @@ $string = [
     'icon' => [
         'open' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-open.gif',
         'closed' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-closed.gif'],
-    'open' => $isOpen,
+    'open' => $data['status'],
     'projects' => $projects,
     'issue_report_channels' => [
         'email'
