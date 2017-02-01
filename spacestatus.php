@@ -3,7 +3,7 @@ header('Cache-Control: no-cache');
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-$data = (array)json_decode(file_get_contents('sensors.json'));
+$data = (array)json_decode(file_get_contents('vars.json'));
 
 if(isset($_GET) || isset($_POST)) {
 	if (isset($_POST['status'])) {
@@ -14,7 +14,7 @@ if(isset($_GET) || isset($_POST)) {
 		$data[$k] = $v;
 	}
 	//datei abspeichern
-	file_put_contents('sensors.json',json_encode($data));
+	file_put_contents('vars.json',json_encode($data));
 }
 
 $projects = [
