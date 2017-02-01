@@ -53,7 +53,6 @@ $feeds = [
 ];
 
 $string = [
-    'open' => $data['status'],
 	'api' => '0.13',
 	'space' => 'Hackerspace Bielefeld e.V.',
 	'logo' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-logo.gif',
