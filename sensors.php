@@ -1,12 +1,10 @@
 <?php
 	//datei einlesen
-	$data = json_decode(file_get_contents('sensors.json'));
+	$data = (array)json_decode(file_get_contents('sensors.json'));
 	//daten ändern
-	if(isset($_GET['keys']) && isset($_GET['vals'])) {}
-		$keys = explode(',',$_GET['keys']);
-		$vals = explode(',',$_GET['vals']);
-		foreach($keys as $i=>$k) {
-			$data[$k] = $vals[$i]
+	if(isset($_GET)) {
+		foreach($_GET as $k=>$v) {
+			$data[$k] = $v;
 		}
 	//datei abspeichern
 		file_put_contents('sensors.json',json_encode($data));
