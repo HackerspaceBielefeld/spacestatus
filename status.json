@@ -22,19 +22,46 @@
             "open": "https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-open.png",
             "closed": "https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-closed.png"
         },
-        "open": true,
-        "lastchange": 1480438529,
-        "message": "",
+        "open": false,
+        "lastchange": 1486037065,
+        "message": "https://hackerspace-bielefeld.de/spacestatus/display.php",
         "trigger_person": "infobot"
     },
     "icon": {
         "open": "https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-open.gif",
         "closed": "https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-closed.gif"
     },
-    "open": true,
+    "sensors": {
+        "temperature": [
+            {
+                "value": null,
+                "unit": "\u00b0C",
+                "location": "Outside",
+                "name": "Street"
+            }
+        ],
+        "humidity": {
+            "value": null,
+            "unit": "%",
+            "location": "Outside",
+            "name": "Street"
+        },
+        "0": ""
+    },
+    "feeds": {
+        "wiki": {
+            "type": "atom",
+            "url": "https://wiki.hackerspace-bielefeld.de/api.php?hidebots=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom"
+        },
+        "calendar": {
+            "type": "ical",
+            "url": "http://hackerspace-bielefeld.de/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events&no_html=true"
+        }
+    },
     "projects": [
         "https://github.com/HackerspaceBielefeld",
-        "https://wiki.hackerspace-bielefeld.de/Kategorie:Projekt"
+        "https://wiki.hackerspace-bielefeld.de/Kategorie:Projekt",
+        "http://luftdaten-bielefeld.de/"
     ],
     "issue_report_channels": [
         "email"
