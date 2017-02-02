@@ -11,6 +11,11 @@ if(isset($_GET) || isset($_POST)) {
 	}
 
 	foreach($_GET as $k=>$v) {
+		if(strtolower($v) == 'true')
+			$v = true;
+		if(strtolower($v) == 'false')
+			$v = false;
+
 		$data[$k] = $v;
 	}
 	//datei abspeichern
@@ -95,6 +100,5 @@ $string = [
 $jsonOutput = json_encode($string, JSON_PRETTY_PRINT + JSON_UNESCAPED_SLASHES);
 file_put_contents("status.json", $jsonOutput);
 print_r($jsonOutput);
-
 include('statistic.php');
 ?>
