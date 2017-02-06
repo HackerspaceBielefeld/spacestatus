@@ -15,7 +15,7 @@ if(!file_exists($DBFILE)) {
 	$db = new SQLite3($DBFILE);
 }
 
-if(isset($_POST['status'])) {
+if(isset($_POST['status'])||isset($_GET['debug'])) {
 
         $time = explode('-',date("Y-m-d-w-H"));
 
@@ -125,13 +125,13 @@ if(isset($_POST['status'])) {
 				else
 					$dstart = 1;
 
-				//echo ':'.$dstart.'-'.$dstop.'<br/>';
+				echo ':'.$dstart.'-'.$dstop.'<br/>';
 
 				for($d=$dstart;$d<=$dstop;$d++) {
 					for($h=0;$h<=23;$h++) {
 						if(isset($r[$y][$m][$d][$h])) {
 							$s = $r[$y][$m][$d][$h];
-							//echo $y.'-'.$m.'-'.$d.'-'.$h.'_'.$s.'<br/>';
+							echo $y.'-'.$m.'-'.$d.'-'.$h.'_'.$s.'<br/>';
 						}
 						
 						if(!isset($js['week'][$w][$h])) {
@@ -140,7 +140,7 @@ if(isset($_POST['status'])) {
 						}
 
 						$js['week'][$w][$h][$s]++;
-						//echo ':'.$y.'-'.$m.'-'.$d.'-'.$w.'-'.$h.'_'.$s.'<br/>';
+						echo ':'.$y.'-'.$m.'-'.$d.'-'.$w.'-'.$h.'_'.$s.'<br/>';
 					}
 					$w = ($w+1)%7;
 				}
@@ -157,9 +157,9 @@ if(isset($_POST['status'])) {
 			}
 		}
 		
-		//echo '<pre>';
-		//print_r($js);
-		//echo '</pre>';
+		echo '<pre>';
+		print_r($js);
+		echo '</pre>';
 
 		$f = fopen('statistic.json','w');
 		fputs($f,json_encode($js));

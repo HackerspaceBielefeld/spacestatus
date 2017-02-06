@@ -45,8 +45,11 @@
                         else if($json->week[$x][$h]->chance < 90) $col = '#ffff00';
                         else if($json->week[$x][$h]->chance < 95) $col = '#00ff00';
                         else  $col = '#ffffff';
+			if(isset($_GET['debug']))
+				echo '<td style="background-color:'. $col .'">'. $json->week[$x][$h]->chance .'</td>';
+			else
+				echo '<td style="background-color:'. $col .'; width: 17px;">&nbsp;</td>';
 
-			echo '<td style="background-color:'. $col .'; width: 17px;">&nbsp;</td>';
 
 		}
 	}

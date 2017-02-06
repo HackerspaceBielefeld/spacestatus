@@ -30,23 +30,38 @@ $projects = [
 
 $sensors = [
 	'temperature' => [
-		[
-			'value' => $data['temp_out'],
+		0 => [
+			'value' => (double)$data['temp_out'],
 			'unit' => '°C',
 			'location' => 'Outside',
 			'name' => "Street"
 		]
 	],
 	'humidity' => [
-		'value' => $data['humidity'],
-		'unit' => '%',
-		'location' => 'Outside',
-		'name' => "Street"
+		0 => [
+			'value' => (double)$data['humidity'],
+			'unit' => '%',
+			'location' => 'Outside',
+			'name' => "Street"
+		]
 	],
-	''
+	'smog' => [
+		0 => [
+			'value' => (double)$data['smog10'],
+			'unit' => 'units/qm',
+			'location' => 'Outside',
+			'name' => '10µm'
+		],
+		1 => [
+			'value' => (double)$data['smog25'],
+			'unit' => 'units/qm',
+			'location' => 'Outside',
+			'name' => '2.5µm'
+		]		
+	]
 ];
 
-$feeds = [
+$feeds = array(
 	'wiki' => [
 		'type' => 'atom',
 		'url' => 'https://wiki.hackerspace-bielefeld.de/api.php?hidebots=1&days=7&limit=50&action=feedrecentchanges&feedformat=atom'
@@ -55,7 +70,7 @@ $feeds = [
 		'type' => 'ical',
 		'url' => 'http://hackerspace-bielefeld.de/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events&no_html=true'
 	]
-];
+);
 
 $string = [
 	'api' => '0.13',
@@ -89,6 +104,7 @@ $string = [
 	'icon' => [
 		'open' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-open.gif',
 		'closed' => 'https://hackerspace-bielefeld.de/spacestatus/hackerspace-bielefeld-closed.gif'],
+	'open' => $data['status'],
 	'sensors' => $sensors,
 	'feeds' => $feeds,
 	'projects' => $projects,
