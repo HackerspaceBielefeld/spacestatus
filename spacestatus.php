@@ -48,13 +48,13 @@ $sensors = [
 	'smog' => [
 		0 => [
 			'value' => (double)$data['smog10'],
-			'unit' => 'units/qm',
+			'unit' => 'µg/m³',
 			'location' => 'Outside',
 			'name' => '10µm'
 		],
 		1 => [
 			'value' => (double)$data['smog25'],
-			'unit' => 'units/qm',
+			'unit' => 'µg/m³',
 			'location' => 'Outside',
 			'name' => '2.5µm'
 		]		
