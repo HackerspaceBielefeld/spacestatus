@@ -35,15 +35,28 @@ $sensors = [
 			'unit' => '°C',
 			'location' => 'Outside',
 			'name' => "Street"
+		],
+		1 => [
+			'value' => (double)$data['temp_in'],
+			'unit' => '°C',
+			'location' => 'Inside',
+			'name' => 'Schankraum'
 		]
 	],
 	'humidity' => [
 		0 => [
-			'value' => (double)$data['humidity'],
+			'value' => (double)$data['humi_out'],
 			'unit' => '%',
 			'location' => 'Outside',
 			'name' => "Street"
+		],
+		1 => [
+			'value' => (double)$data['humi_in'],
+			'unit' => '%',
+			'location' => 'Inside',
+			'name' => 'Schankraum'
 		]
+
 	],
 	'smog' => [
 		0 => [
